@@ -65,16 +65,16 @@ void tit(){
 	switch (lookahead)
 		
 		case primario: 
-						match("primario");
-						break;
+			match("primario");
+			break;
 						
 		case secundario:
-						match("secundario");
-						break;
+			match("secundario");
+			break;
 						
 		case universitario:
-						match("universitario");
-						break;
+			match("universitario");
+			break;
 						
 		default: error ("Se esperaba un titulo valido");
 }
@@ -83,16 +83,16 @@ void cat(){
 	switch (lookahead)
 		
 		case A: 
-						match("A");
-						break;
+			match("A");
+			break;
 						
 		case B:
-						match("B");
-						break;
+			match("B");
+			break;
 						
 		case C:
-						match("C");
-						break;
+			match("C");
+			break;
 						
 		default: error ("Se esperaba una categoria valida");
 }
