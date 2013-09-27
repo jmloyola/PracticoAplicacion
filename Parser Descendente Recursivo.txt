@@ -1,0 +1,98 @@
+// Parser Descendente Recursivo para la gramatica del practico de aplicacion utilizando BNF-E
+// Diseño y Construccion de Compiladores 2013 - UNSL
+// Grupo:
+//			Alfaya, Cristhian
+//			Loyola, Juan Martin
+
+
+void parser(){
+	lookahead = get_next_token();
+	empresa();
+	if (lookahead <> 'eof')
+		error("Se esperaba el fin de archivo");
+}
+
+void empresa(){
+	empleados();
+}
+
+void empleados(){
+	empleado();
+	
+	while (lookahead == "."){
+		match(".");
+		empleado();
+	}
+}
+
+void empleado(){
+	match("Legajo");
+	match(":");
+	match(const_numerica);
+	laborales();
+	personales();
+}
+
+void personales(){
+	match("Apellido y Nombre");
+	match(":");
+	match(const_string);
+	match(const_string);
+	match("Hijos");
+	match(":");
+	match(const_numerica);
+	match("Titulo");
+	match(":");
+	tit();
+}
+
+void laborales(){
+	match("Ingreso");
+	match(":");
+	match(const_numerica);
+	match("Categoria");
+	match(":");
+	cat();
+	match("Basico");
+	match(":");
+	match(const_numerica);
+	match("Horas");
+	match(":");
+	match(const_numerica);
+}
+
+void tit(){
+	switch (lookahead)
+		
+		case primario: 
+						match("primario");
+						break;
+						
+		case secundario:
+						match("secundario");
+						break;
+						
+		case universitario:
+						match("universitario");
+						break;
+						
+		default: error ("Se esperaba un titulo valido");
+}
+
+void cat(){
+	switch (lookahead)
+		
+		case A: 
+						match("A");
+						break;
+						
+		case B:
+						match("B");
+						break;
+						
+		case C:
+						match("C");
+						break;
+						
+		default: error ("Se esperaba una categoria valida");
+}

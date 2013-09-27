@@ -1,0 +1,14 @@
+// Gramatica para el practico de aplicacion utilizando BNF-E
+// Diseño y Construccion de Compiladores 2013 - UNSL
+// Grupo:
+//			Alfaya, Cristhian
+//			Loyola, Juan Martin
+
+
+<EMPRESA> ::= <EMPLEADOS>
+<EMPLEADOS> ::= <EMPLEADO> { . <EMPLEADO> }
+<EMPLEADO> ::= Legajo: num <LABORALES> <PERSONALES>
+<PERSONALES> ::= Apellido y Nombre: string string Hijos: num Titulo: <TIT>
+<LABORALES> ::= Ingreso: num Categoria: <CAT> Basico: num Horas: num
+<CAT> ::= A | B | C
+<TIT> ::= primario | secundario | universitario
